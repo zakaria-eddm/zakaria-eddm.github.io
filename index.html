@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Zakaria Ed-dymany</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body {background:#0f172a;color:#f8fafc;scroll-behavior:smooth;}
+    header {position:fixed;top:0;width:100%;background:#1e293b;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:10;}
+    header h1 {font-size:1.5rem;font-weight:700;color:#38bdf8;}
+    nav a {color:#f1f5f9;text-decoration:none;margin:0 1rem;font-weight:500;}
+    nav a:hover {color:#38bdf8;}
+    section {padding:6rem 2rem;max-width:1000px;margin:auto;}
+    .hero {text-align:center;padding-top:6rem;}
+    .hero h2 {font-size:2.5rem;margin-bottom:1rem;color:#38bdf8;}
+    .hero p {font-size:1.2rem;color:#cbd5e1;}
+    .skills, .projects {display:grid;gap:1.5rem;}
+    .skills-list, .projects-list {display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;}
+    .skill, .project {background:#1e293b;padding:1rem 1.5rem;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.2);}
+    .project:hover, .skill:hover {transform:translateY(-5px);transition:0.3s;}
+    footer {text-align:center;padding:2rem;background:#1e293b;color:#94a3b8;}
+    .contact a {color:#38bdf8;text-decoration:none;}
+    @media (max-width:700px){.hero h2{font-size:2rem;}}
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Zakaria Ed-dymany</h1>
+    <nav>
+      <a href="#about">À propos</a>
+      <a href="#skills">Compétences</a>
+      <a href="#projects">Projets</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h2>Big Data & IA Developer</h2>
+    <p>Étudiant en Master Big Data & Cloud Computing, passionné par l'intelligence artificielle, le Machine Learning et les systèmes distribués.</p>
+  </section>
+
+  <section id="about">
+    <h2>À propos</h2>
+    <p style="margin-top:1rem;color:#cbd5e1;">
+      Je suis un développeur motivé et curieux, spécialisé dans la Data Science, l'IA et les technologies Cloud.
+      Mon objectif est de construire des solutions intelligentes basées sur la donnée pour répondre à des problématiques réelles.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Compétences</h2>
+    <div class="skills-list" style="margin-top:1.5rem;">
+      <div class="skill">Python</div>
+      <div class="skill">Machine Learning</div>
+      <div class="skill">Deep Learning</div>
+      <div class="skill">Big Data (Hadoop, Spark)</div>
+      <div class="skill">Cloud Computing</div>
+      <div class="skill">NLP</div>
+      <div class="skill">SQL / NoSQL</div>
+      <div class="skill">Git / Linux</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projets</h2>
+    <div class="projects-list" style="margin-top:1.5rem;">
+      <div class="project">
+        <h3>🧠 Détection et Prédiction de Malwares</h3>
+        <p>Projet de master utilisant le Machine Learning et Deep Learning pour détecter les malwares à partir de caractéristiques PE.</p>
+      </div>
+      <div class="project">
+        <h3>🤖 Assistant IA Éducatif</h3>
+        <p>Application NLP/RAG intelligente pour l’aide à l’apprentissage et à la recherche, basée sur LLM et FAISS.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p style="margin-top:1rem;">📧 <a href="mailto:zakaria.eddm@gmail.com">zakaria.eddm@gmail.com</a></p>
+    <p>🔗 <a href="https://github.com/zakaria-eddm" target="_blank">github.com/zakaria-eddm</a></p>
+    <p>💼 <a href="https://linkedin.com/in/zakaria-eddm" target="_blank">linkedin.com/in/zakaria-eddm</a></p>
+  </section>
+
+  <footer>
+    © 2025 Zakaria Ed-dymany — Tous droits réservés.
+  </footer>
+
+</body>
+</html>

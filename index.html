@@ -3,91 +3,1646 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — Zakaria Ed-dymany</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Portfolio — Zakaria Ed-dymany | Big Data & AI Developer</title>
+  <meta name="description" content="Portfolio de Zakaria Ed-dymany, développeur spécialisé en Big Data, Intelligence Artificielle et Cloud Computing.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-    body {background:#0f172a;color:#f8fafc;scroll-behavior:smooth;}
-    header {position:fixed;top:0;width:100%;background:#1e293b;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:10;}
-    header h1 {font-size:1.5rem;font-weight:700;color:#38bdf8;}
-    nav a {color:#f1f5f9;text-decoration:none;margin:0 1rem;font-weight:500;}
-    nav a:hover {color:#38bdf8;}
-    section {padding:6rem 2rem;max-width:1000px;margin:auto;}
-    .hero {text-align:center;padding-top:6rem;}
-    .hero h2 {font-size:2.5rem;margin-bottom:1rem;color:#38bdf8;}
-    .hero p {font-size:1.2rem;color:#cbd5e1;}
-    .skills, .projects {display:grid;gap:1.5rem;}
-    .skills-list, .projects-list {display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;}
-    .skill, .project {background:#1e293b;padding:1rem 1.5rem;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.2);}
-    .project:hover, .skill:hover {transform:translateY(-5px);transition:0.3s;}
-    footer {text-align:center;padding:2rem;background:#1e293b;color:#94a3b8;}
-    .contact a {color:#38bdf8;text-decoration:none;}
-    @media (max-width:700px){.hero h2{font-size:2rem;}}
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #818cf8;
+      --secondary: rgba(30, 41, 59, 0.7);
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --light: #f8fafc;
+      --gray: #cbd5e1;
+      --gray-dark: #94a3b8;
+      --accent: #8b5cf6;
+      --accent-light: #a78bfa;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --glass: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      --shadow-light: 0 4px 16px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+      --transition-slow: all 0.5s ease;
+      --border-radius: 16px;
+      --border-radius-sm: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 90% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 25%);
+      z-index: -1;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(15px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: var(--transition);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    header.scrolled {
+      padding: 0.7rem 2rem;
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .lang-switcher {
+      position: relative;
+    }
+
+    .lang-btn {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      color: var(--light);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .lang-options {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--secondary);
+      border-radius: var(--border-radius);
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      box-shadow: var(--shadow);
+      display: none;
+      flex-direction: column;
+      min-width: 120px;
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .lang-options.active {
+      display: flex;
+    }
+
+    .lang-options [data-lang] {
+      display: block !important;
+    }
+
+    .lang-option {
+      padding: 0.7rem 1rem;
+      color: var(--light);
+      text-decoration: none;
+      border-radius: var(--border-radius-sm);
+      transition: var(--transition);
+    }
+
+    .lang-option:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .cv-download-btn {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .cv-download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Sections générales */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      color: var(--light);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      animation: fadeUp 1s ease-out;
+    }
+
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeUp 1s ease-out 0.2s both;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      animation: fadeUp 1s ease-out 0.4s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+      animation: fadeUp 1s ease-out 0.6s both;
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    .cta-button.secondary:hover {
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-img {
+      width: 100%;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .about-img::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--primary), transparent);
+      opacity: 0.2;
+      z-index: 1;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .about-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-text {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--glass);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .skill-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .skill-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .skill-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-card p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Projects Section */
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .project-img {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-img img {
+      transform: scale(1.1);
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .project-link:hover {
+      transform: scale(1.1);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .project-content p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--glass);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .contact-item:hover {
+      transform: translateX(10px);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .contact-details h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-details p, .contact-details a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-details a:hover {
+      color: var(--primary);
+    }
+
+    .contact-form {
+      background: var(--glass);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--gray);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-radius-sm);
+      color: var(--light);
+      font-family: 'Poppins', sans-serif;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    /* CV Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--secondary);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow);
+      animation: scaleUp 0.3s ease;
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .modal-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+    }
+
+    .modal-btn.secondary {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .modal-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .qr-code {
+      width: 200px;
+      height: 200px;
+      margin: 1rem auto;
+      background: white;
+      padding: 1rem;
+      border-radius: var(--border-radius-sm);
+      display: none;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(30, 41, 59, 0.8);
+      padding: 3rem 2rem;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: var(--glass);
+      color: var(--light);
+      border-radius: 50%;
+      text-decoration: none;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      color: var(--gray-dark);
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scaleUp {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Particles Background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      .header-controls {
+        gap: 1rem;
+      }
+      
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(15, 23, 42, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(15px);
+        border-left: 1px solid var(--glass-border);
+      }
+      
+      nav.active {
+        right: 0;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+        z-index: 1001;
+      }
+      
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .modal-buttons {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 576px) {
+      section {
+        padding: 4rem 1rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .projects-container {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Zakaria Ed-dymany</h1>
-    <nav>
-      <a href="#about">À propos</a>
-      <a href="#skills">Compétences</a>
-      <a href="#projects">Projets</a>
-      <a href="#contact">Contact</a>
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+
+  <header id="header">
+    <div class="logo">
+      <i class='bx bx-code-alt'></i>
+      <span data-lang="fr">Zakaria Ed-dymany</span>
+      <span data-lang="en" style="display:none">Zakaria Ed-dymany</span>
+    </div>
+    
+    <div class="header-controls">
+      <div class="lang-switcher">
+        <button class="lang-btn" id="langBtn">
+          <i class="fas fa-globe"></i>
+          <span id="currentLang">FR</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="lang-options" id="langOptions">
+          <a href="#" class="lang-option" data-lang="fr">Français</a>
+          <a href="#" class="lang-option" data-lang="en">English</a>
+        </div>
+      </div>
+      
+      <button class="cv-download-btn" id="cvDownloadBtn">
+        <i class="fas fa-download"></i>
+        <span data-lang="fr">Télécharger CV</span>
+        <span data-lang="en" style="display:none">Download CV</span>
+      </button>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    
+    <nav id="nav">
+      <a href="#home" data-lang="fr">Accueil</a>
+      <a href="#home" data-lang="en" style="display:none">Home</a>
+      <a href="#about" data-lang="fr">À propos</a>
+      <a href="#about" data-lang="en" style="display:none">About</a>
+      <a href="#skills" data-lang="fr">Compétences</a>
+      <a href="#skills" data-lang="en" style="display:none">Skills</a>
+      <a href="#projects" data-lang="fr">Projets</a>
+      <a href="#projects" data-lang="en" style="display:none">Projects</a>
+      <a href="#contact" data-lang="fr">Contact</a>
+      <a href="#contact" data-lang="en" style="display:none">Contact</a>
     </nav>
   </header>
 
   <section class="hero" id="home">
-    <h2>Big Data & IA Developer</h2>
-    <p>Étudiant en Master Big Data & Cloud Computing, passionné par l'intelligence artificielle, le Machine Learning et les systèmes distribués.</p>
+    <div class="hero-content">
+      <h2 data-lang="fr">Développeur Big Data & IA</h2>
+      <h2 data-lang="en" style="display:none">Big Data & AI Developer</h2>
+      <p data-lang="fr">Étudiant en Master Big Data & Cloud Computing, passionné par l'intelligence artificielle, le Machine Learning et les systèmes distribués.</p>
+      <p data-lang="en" style="display:none">Master's student in Big Data & Cloud Computing, passionate about artificial intelligence, Machine Learning and distributed systems.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="cta-button" data-lang="fr">Voir mes projets</a>
+        <a href="#projects" class="cta-button" data-lang="en" style="display:none">View my projects</a>
+        <a href="#contact" class="cta-button secondary" data-lang="fr">Me contacter</a>
+        <a href="#contact" class="cta-button secondary" data-lang="en" style="display:none">Contact me</a>
+      </div>
+    </div>
   </section>
 
   <section id="about">
-    <h2>À propos</h2>
-    <p style="margin-top:1rem;color:#cbd5e1;">
-      Je suis un développeur motivé et curieux, spécialisé dans la Data Science, l'IA et les technologies Cloud.
-      Mon objectif est de construire des solutions intelligentes basées sur la donnée pour répondre à des problématiques réelles.
-    </p>
+    <h2 class="section-title" data-lang="fr">À propos de moi</h2>
+    <h2 class="section-title" data-lang="en" style="display:none">About Me</h2>
+    <div class="about-content">
+      <div class="about-img">
+        <img src="./Blue Modern Business Linktree Profile Image.png" alt="Zakaria Ed-dymany">
+      </div>
+      <div class="about-text">
+        <p data-lang="fr">Je suis un Étudiant en Master Big Data & Cloud Computing, passionné par l’intelligence artificielle, le cloud et le DevOps. Motivé, curieux et toujours prêt à apprendre, j’aime concevoir des solutions innovantes alliant performance et technologie.
+                          Je cherche à évoluer dans un environnement stimulant où je peux contribuer à des projets d’IA et de Cloud tout en développant mes compétences techniques.</p>
+        <p data-lang="en" style="display:none">Master's student in Big Data & Cloud Computing, passionate about Artificial Intelligence, Cloud, and DevOps. A motivated and curious learner, dedicated to designing innovative solutions that leverage cutting-edge technology for high performance.
+Seeking to contribute to impactful AI and Cloud projects within a stimulating environment that fosters continuous learning and technical growth.</p>
+        
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number">6</div>
+            <div class="stat-text" data-lang="fr">Projets réalisés</div>
+            <div class="stat-text" data-lang="en" style="display:none">Projects completed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0</div>
+            <div class="stat-text" data-lang="fr">Années d'expérience</div>
+            <div class="stat-text" data-lang="en" style="display:none">Years of experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">8+</div>
+            <div class="stat-text" data-lang="fr">Certifications</div>
+            <div class="stat-text" data-lang="en" style="display:none">Certifications</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="skills">
-    <h2>Compétences</h2>
-    <div class="skills-list" style="margin-top:1.5rem;">
-      <div class="skill">Python</div>
-      <div class="skill">Machine Learning</div>
-      <div class="skill">Deep Learning</div>
-      <div class="skill">Big Data (Hadoop, Spark)</div>
-      <div class="skill">Cloud Computing</div>
-      <div class="skill">NLP</div>
-      <div class="skill">SQL / NoSQL</div>
-      <div class="skill">Git / Linux</div>
+    <h2 class="section-title" data-lang="fr">Mes Compétences</h2>
+    <h2 class="section-title" data-lang="en" style="display:none">My Skills</h2>
+    <div class="skills-container">
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class='bx bxl-python'></i>
+        </div>
+        <h3>Python</h3>
+        <p data-lang="fr">Développement d'applications data science et machine learning avec les bibliothèques modernes.</p>
+        <p data-lang="en" style="display:none">Development of data science and machine learning applications with modern libraries.</p>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class='bx bx-brain'></i>
+        </div>
+        <h3 data-lang="fr">Machine Learning</h3>
+        <h3 data-lang="en" style="display:none">Machine Learning</h3>
+        <p data-lang="fr">Conception et déploiement de modèles prédictifs.</p>
+        <p data-lang="en" style="display:none">Design and deployment of predictive models and recommendation systems.</p>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class='bx bx-chip'></i>
+        </div>
+        <h3 data-lang="fr">Deep Learning</h3>
+        <h3 data-lang="en" style="display:none">Deep Learning</h3>
+        <p data-lang="fr">Réseaux de neurones, vision par ordinateur et traitement du langage naturel.</p>
+        <p data-lang="en" style="display:none">Neural networks, computer vision and natural language processing.</p>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class='bx bx-data'></i>
+        </div>
+        <h3 data-lang="fr">Big Data</h3>
+        <h3 data-lang="en" style="display:none">Big Data</h3>
+        <p data-lang="fr">Traitement distribué avec Hadoop, Spark et gestion de données massives.</p>
+        <p data-lang="en" style="display:none">Distributed processing with Hadoop, Spark and massive data management.</p>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class='bx bx-cloud'></i>
+        </div>
+        <h3 data-lang="fr">Cloud & DevOps</h3>
+        <h3 data-lang="en" style="display:none">Cloud & DevOps</h3>
+        <p data-lang="fr">Déploiement et gestion d'infrastructures sur AWS, Docker, Ansible et Kubernetes.</p>
+        <p data-lang="en" style="display:none">Deployment and management of infrastructures on AWS, Docker, Ansible and Kubernetes.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class='bx bx-chat'></i>
+        </div>
+        <h3>NLP</h3>
+        <p data-lang="fr">Traitement automatique du langage naturel et systèmes de question-réponse.</p>
+        <p data-lang="en" style="display:none">Natural language processing and question-answering systems.</p>
+      </div>
+   
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class='bx bx-book-open'></i>
+        </div>
+        <h3>RAG</h3>
+        <p data-lang="fr">Retrieval-Augmented Generation : combinaison de recherche d’information et génération intelligente via LLMs.</p>
+        <p data-lang="en" style="display:none">Combines information retrieval and intelligent generation through LLMs.</p>
+      </div>
+
     </div>
   </section>
 
-  <section id="projects">
-    <h2>Projets</h2>
-    <div class="projects-list" style="margin-top:1.5rem;">
-      <div class="project">
-        <h3>🧠 Détection et Prédiction de Malwares</h3>
-        <p>Projet de master utilisant le Machine Learning et Deep Learning pour détecter les malwares à partir de caractéristiques PE.</p>
+<section id="projects">
+  <h2 class="section-title" data-lang="fr">Mes Projets</h2>
+  <h2 class="section-title" data-lang="en" style="display:none">My Projects</h2>
+
+  <div class="projects-container">
+
+
+    <div class="project-card">
+      <div class="project-img">
+        <img src="./app att.png" alt="Application Mobile UH2 Attendance">
+        <div class="project-overlay">
+          <div class="project-links">
+            <a href="https://github.com/zakaria-eddm/uh2-attendance-app" class="project-link" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="project">
-        <h3>🤖 Assistant IA Éducatif</h3>
-        <p>Application NLP/RAG intelligente pour l’aide à l’apprentissage et à la recherche, basée sur LLM et FAISS.</p>
+      <div class="project-content">
+        <h3 data-lang="fr">Application Mobile UH2 Attendance</h3>
+        <h3 data-lang="en" style="display:none">UH2 Attendance Mobile Application</h3>
+        <p data-lang="fr">
+          Application mobile React Native pour la gestion des présences et ordonnancements académiques, connectée à une plateforme via API REST.
+        </p>
+        <p data-lang="en" style="display:none">
+          React Native mobile application for attendance management and academic scheduling, connected to a platform via REST API.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">React Native</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Java Spring Boot</span>
+          <span class="tech-tag">REST API</span>
+          <span class="tech-tag">PostgreSQL</span>
+        </div>
       </div>
     </div>
-  </section>
+
+    <div class="project-card">
+      <div class="project-img">
+        <img src="./Picture.png" alt="Détection de Malwares">
+        <div class="project-overlay">
+          <div class="project-links">
+            <a href="https://github.com/zakaria-eddm/D-tection-et-Pr-diction-des-Malwares-avec-Machine-Learning-et-Deep-Learning" class="project-link" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="project-content">
+        <h3 data-lang="fr">Détection et Prédiction de Malwares</h3>
+        <h3 data-lang="en" style="display:none">Malware Detection and Prediction</h3>
+        <p data-lang="fr">
+          Projet de master exploitant le Machine Learning et Deep Learning pour identifier et prédire les malwares à partir de caractéristiques PE.
+        </p>
+        <p data-lang="en" style="display:none">
+          Master's project using ML and DL to detect and predict malware based on PE file features.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">Scikit-learn</span>
+          <span class="tech-tag">Streamlit</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">
+        <img src="./Screenshot from 2025-10-26 20-47-20.png" alt="Assistant IA Intelligent">
+        <div class="project-overlay">
+          <div class="project-links">
+            <a href="https://github.com/zakaria-eddm/Assistant-IA-RAG-NLP-Agentic-Knowledge-Management" class="project-link" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="project-content">
+        <h3 data-lang="fr">Assistant IA Intelligent</h3>
+        <h3 data-lang="en" style="display:none">Intelligent AI Assistant (RAG)</h3>
+        <p data-lang="fr">
+          Développement d’un assistant IA basé sur la recherche augmentée (RAG), le NLP et la gestion de connaissances (KM) avec FAISS et LLMs.
+        </p>
+        <p data-lang="en" style="display:none">
+          Development of an AI assistant using Retrieval-Augmented Generation, NLP, Knowledge Management, FAISS, and LLMs.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">RAG</span>
+          <span class="tech-tag">FAISS</span>
+          <span class="tech-tag">LangChain</span>
+          <span class="tech-tag">LLM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">
+        <img src="./weather-app-preview.png" alt="Application Météo Desktop">
+        <div class="project-overlay">
+          <div class="project-links">
+            <a href="https://github.com/zakaria-eddm/weather-desktop-app" class="project-link" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="project-content">
+        <h3 data-lang="fr">Application Météo Desktop</h3>
+        <h3 data-lang="en" style="display:none">Desktop Weather Application</h3>
+        <p data-lang="fr">
+          Application desktop développée avec PyQt5 offrant une interface moderne, multilingue et des prévisions météo détaillées avec géolocalisation automatique.
+        </p>
+        <p data-lang="en" style="display:none">
+          Desktop application built with PyQt5 featuring modern UI, multilingual support, and detailed weather forecasts with automatic geolocation.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">PyQt5</span>
+          <span class="tech-tag">REST API</span>
+          <span class="tech-tag">JSON</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">
+        <img src="./medical-expert-system.png" alt="Système Expert Médical">
+        <div class="project-overlay">
+          <div class="project-links">
+            <a href="https://github.com/zakaria-eddm/systeme-expert-medical" class="project-link" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="project-content">
+        <h3 data-lang="fr">Système Expert de Diagnostic Médical</h3>
+        <h3 data-lang="en" style="display:none">Medical Diagnostic Expert System</h3>
+        <p data-lang="fr">
+          Système expert développé en Prolog pour le diagnostic intelligent de 7 pathologies respiratoires avec interface graphique interactive.
+        </p>
+        <p data-lang="en" style="display:none">
+          Expert system developed in Prolog for intelligent diagnosis of 7 respiratory diseases with interactive graphical interface.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">Prolog</span>
+          <span class="tech-tag">XPCE</span>
+          <span class="tech-tag">IA Symbolique</span>
+          <span class="tech-tag">Systèmes Experts</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
   <section id="contact">
-    <h2>Contact</h2>
-    <p style="margin-top:1rem;">📧 <a href="mailto:zakaria.eddm@gmail.com">zakaria.eddm@gmail.com</a></p>
-    <p>🔗 <a href="https://github.com/zakaria-eddm" target="_blank">github.com/zakaria-eddm</a></p>
-    <p>💼 <a href="https://linkedin.com/in/zakaria-eddm" target="_blank">linkedin.com/in/zakaria-eddm</a></p>
+    <h2 class="section-title" data-lang="fr">Contactez-moi</h2>
+    <h2 class="section-title" data-lang="en" style="display:none">Contact Me</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Email</h3>
+            <a href="mailto:zakariaeddymany@gmail.com">zakariaeddymany@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="contact-details">
+            <h3>GitHub</h3>
+            <a href="https://github.com/zakaria-eddm" target="_blank">github.com/zakaria-eddm</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-linkedin"></i>
+          </div>
+          <div class="contact-details">
+            <h3>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/zakaria-e-5522a6290" target="_blank">linkedin.com/in/zakaria-e-5522a6290</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-details">
+            <h3 data-lang="fr">Localisation</h3>
+            <h3 data-lang="en" style="display:none">Location</h3>
+            <p data-lang="fr">Maroc</p>
+            <p data-lang="en" style="display:none">Morocco</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name" data-lang="fr">Nom</label>
+            <label for="name" data-lang="en" style="display:none">Name</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" data-lang="fr">Sujet</label>
+            <label for="subject" data-lang="en" style="display:none">Subject</label>
+            <input type="text" id="subject" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" data-lang="fr">Message</label>
+            <label for="message" data-lang="en" style="display:none">Message</label>
+            <textarea id="message" class="form-control" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn" data-lang="fr">Envoyer le message</button>
+          <button type="submit" class="submit-btn" data-lang="en" style="display:none">Send Message</button>
+        </form>
+      </div>
+    </div>
   </section>
 
   <footer>
-    © 2025 Zakaria Ed-dymany — Tous droits réservés.
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://github.com/zakaria-eddm" class="social-link" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/zakaria-e-5522a6290/" class="social-link" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:zakariaeddymany@gmail.com" class="social-link">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <p class="copyright" data-lang="fr">© 2025 Zakaria Ed-dymany — Tous droits réservés.</p>
+      <p class="copyright" data-lang="en" style="display:none">© 2025 Zakaria Ed-dymany — All rights reserved.</p>
+    </div>
   </footer>
 
+  <!-- CV Download Modal -->
+  <div class="modal" id="cvModal">
+    <div class="modal-content">
+      <button class="close-modal" id="closeModal">
+        <i class="fas fa-times"></i>
+      </button>
+      <h3 class="modal-title" data-lang="fr">Télécharger mon CV</h3>
+      <h3 class="modal-title" data-lang="en" style="display:none">Download my CV</h3>
+      <p data-lang="fr">Choisissez votre méthode de téléchargement préférée :</p>
+      <p data-lang="en" style="display:none">Choose your preferred download method:</p>
+      
+      <div class="qr-code" id="qrCode">
+        <!-- QR Code would be generated here -->
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f8fafc;color:#0f172a;font-weight:bold;">
+          QR CODE CV
+        </div>
+      </div>
+      
+      <div class="modal-buttons">
+        <a href="#" class="modal-btn primary" id="directDownload">
+          <i class="fas fa-download"></i>
+          <span data-lang="fr">Télécharger Direct</span>
+          <span data-lang="en" style="display:none">Direct Download</span>
+        </a>
+        <button class="modal-btn secondary" id="showQR">
+          <i class="fas fa-qrcode"></i>
+          <span data-lang="fr">Voir QR Code</span>
+          <span data-lang="en" style="display:none">Show QR Code</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Initialize particles background
+    document.addEventListener('DOMContentLoaded', function() {
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#6366f1" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#6366f1",
+            opacity: 0.2,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" },
+            resize: true
+          }
+        },
+        retina_detect: true
+      });
+    });
+
+    // Current language
+    let currentLang = 'fr';
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const nav = document.getElementById('nav');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+      nav.classList.toggle('active');
+      if (nav.classList.contains('active')) {
+        mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+      } else {
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      }
+    });
+
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        nav.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    // Language switcher
+    const langBtn = document.getElementById('langBtn');
+    const langOptions = document.getElementById('langOptions');
+    const currentLangText = document.getElementById('currentLang');
+    
+    langBtn.addEventListener('click', function() {
+      langOptions.classList.toggle('active');
+    });
+    
+    // Close language options when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!langBtn.contains(e.target) && !langOptions.contains(e.target)) {
+        langOptions.classList.remove('active');
+      }
+    });
+    
+    // Language selection
+    const langOptionsList = document.querySelectorAll('.lang-option');
+    langOptionsList.forEach(option => {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        const selectedLang = this.getAttribute('data-lang');
+        changeLanguage(selectedLang);
+        langOptions.classList.remove('active');
+      });
+    });
+
+    // Function to change language
+    function changeLanguage(lang) {
+      currentLang = lang;
+      currentLangText.textContent = lang.toUpperCase();
+      
+      // Hide all language-specific elements EXCEPT lang options
+      document.querySelectorAll('[data-lang]:not(.lang-options [data-lang])').forEach(element => {
+        element.style.display = 'none';
+      });
+      
+      // Show elements for selected language EXCEPT lang options
+      document.querySelectorAll(`[data-lang="${lang}"]:not(.lang-options [data-lang])`).forEach(element => {
+        element.style.display = element.tagName === 'SPAN' ? 'inline' : 'block';
+      });
+      
+      // Special handling for buttons with multiple spans
+      document.querySelectorAll('.cta-button, .submit-btn').forEach(button => {
+        const spans = button.querySelectorAll('span[data-lang]');
+        spans.forEach(span => {
+          span.style.display = 'none';
+        });
+        button.querySelector(`span[data-lang="${lang}"]`).style.display = 'inline';
+      });
+    }
+
+    // CV Download Modal
+    const cvDownloadBtn = document.getElementById('cvDownloadBtn');
+    const cvModal = document.getElementById('cvModal');
+    const closeModal = document.getElementById('closeModal');
+    const directDownload = document.getElementById('directDownload');
+    const showQR = document.getElementById('showQR');
+    const qrCode = document.getElementById('qrCode');
+    
+    cvDownloadBtn.addEventListener('click', function() {
+      cvModal.classList.add('active');
+    });
+    
+    closeModal.addEventListener('click', function() {
+      cvModal.classList.remove('active');
+      qrCode.style.display = 'none';
+    });
+    
+    directDownload.addEventListener('click', function(e) {
+      e.preventDefault();
+      // In a real implementation, this would trigger the CV download
+      // For demo purposes, we'll create a fake download
+      const link = document.createElement('a');
+      link.href = './zakaria.pdf'; 
+      link.download = 'Zakaria_Ed-dymany_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Show success message in current language
+      if (currentLang === 'fr') {
+        alert('Téléchargement du CV réussi!');
+      } else {
+        alert('CV download successful!');
+      }
+      
+      cvModal.classList.remove('active');
+    });
+    
+    showQR.addEventListener('click', function() {
+      qrCode.style.display = 'block';
+      // In a real implementation, this would show the QR code for CV download
+    });
+    
+    // Close modal when clicking outside
+    cvModal.addEventListener('click', function(e) {
+      if (e.target === cvModal) {
+        cvModal.classList.remove('active');
+        qrCode.style.display = 'none';
+      }
+    });
+
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (currentLang === 'fr') {
+        alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
+      } else {
+        alert('Thank you for your message! I will get back to you as soon as possible.');
+      }
+      contactForm.reset();
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeUp 1s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.skill-card, .project-card, .stat-item, .contact-item').forEach(el => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>

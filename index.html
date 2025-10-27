@@ -8,6 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
   <style>
     :root {
       --primary: #6366f1;
@@ -761,7 +764,6 @@
     .modal-btn:hover {
       transform: translateY(-2px);
     }
-
     .qr-code {
       width: 200px;
       height: 200px;
@@ -770,7 +772,15 @@
       padding: 1rem;
       border-radius: var(--border-radius-sm);
       display: none;
+      justify-content: center;
+      align-items: center;
     }
+
+    .qr-code canvas {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
 
     .close-modal {
       position: absolute;
@@ -954,8 +964,10 @@
         grid-template-columns: 1fr;
       }
     }
+
   </style>
 </head>
+
 <body>
 
   <!-- Particles Background -->
@@ -1403,35 +1415,32 @@ Seeking to contribute to impactful AI and Cloud projects within a stimulating en
 
   <!-- CV Download Modal -->
   <div class="modal" id="cvModal">
-    <div class="modal-content">
-      <button class="close-modal" id="closeModal">
-        <i class="fas fa-times"></i>
-      </button>
-      <h3 class="modal-title" data-lang="fr">Télécharger mon CV</h3>
-      <h3 class="modal-title" data-lang="en" style="display:none">Download my CV</h3>
-      <p data-lang="fr">Choisissez votre méthode de téléchargement préférée :</p>
-      <p data-lang="en" style="display:none">Choose your preferred download method:</p>
-      
-      <div class="qr-code" id="qrCode">
-        <!-- QR Code would be generated here -->
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f8fafc;color:#0f172a;font-weight:bold;">
-          QR CODE CV
-        </div>
+      <div class="modal-content">
+          <button class="close-modal" id="closeModal">
+              <i class="fas fa-times"></i>
+          </button>
+          <h3 class="modal-title" data-lang="fr">Télécharger mon CV</h3>
+          <h3 class="modal-title" data-lang="en" style="display:none">Download my CV</h3>
+          <p data-lang="fr">Choisissez votre méthode de téléchargement préférée :</p>
+          <p data-lang="en" style="display:none">Choose your preferred download method:</p>
+          
+          <div class="qr-code" id="qrCode">
+              <canvas id="qrCanvas"></canvas>
+          </div>
+
+          <div class="modal-buttons">
+              <a href="#" class="modal-btn primary" id="directDownload">
+                  <i class="fas fa-download"></i>
+                  <span data-lang="fr">Télécharger Direct</span>
+                  <span data-lang="en" style="display:none">Direct Download</span>
+              </a>
+              <button class="modal-btn secondary" id="showQR">
+                  <i class="fas fa-qrcode"></i>
+                  <span data-lang="fr">Voir QR Code</span>
+                  <span data-lang="en" style="display:none">Show QR Code</span>
+              </button>
+          </div>
       </div>
-      
-      <div class="modal-buttons">
-        <a href="#" class="modal-btn primary" id="directDownload">
-          <i class="fas fa-download"></i>
-          <span data-lang="fr">Télécharger Direct</span>
-          <span data-lang="en" style="display:none">Direct Download</span>
-        </a>
-        <button class="modal-btn secondary" id="showQR">
-          <i class="fas fa-qrcode"></i>
-          <span data-lang="fr">Voir QR Code</span>
-          <span data-lang="en" style="display:none">Show QR Code</span>
-        </button>
-      </div>
-    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -1490,7 +1499,7 @@ Seeking to contribute to impactful AI and Cloud projects within a stimulating en
     // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const nav = document.getElementById('nav');
-    
+
     mobileMenuBtn.addEventListener('click', function() {
       nav.classList.toggle('active');
       if (nav.classList.contains('active')) {
@@ -1513,18 +1522,18 @@ Seeking to contribute to impactful AI and Cloud projects within a stimulating en
     const langBtn = document.getElementById('langBtn');
     const langOptions = document.getElementById('langOptions');
     const currentLangText = document.getElementById('currentLang');
-    
+
     langBtn.addEventListener('click', function() {
       langOptions.classList.toggle('active');
     });
-    
+
     // Close language options when clicking outside
     document.addEventListener('click', function(e) {
       if (!langBtn.contains(e.target) && !langOptions.contains(e.target)) {
         langOptions.classList.remove('active');
       }
     });
-    
+
     // Language selection
     const langOptionsList = document.querySelectorAll('.lang-option');
     langOptionsList.forEach(option => {
@@ -1541,14 +1550,20 @@ Seeking to contribute to impactful AI and Cloud projects within a stimulating en
       currentLang = lang;
       currentLangText.textContent = lang.toUpperCase();
       
-      // Hide all language-specific elements EXCEPT lang options
-      document.querySelectorAll('[data-lang]:not(.lang-options [data-lang])').forEach(element => {
-        element.style.display = 'none';
+      // Hide all language-specific elements (except lang options)
+      document.querySelectorAll('[data-lang]').forEach(element => {
+        // Skip elements inside lang-options
+        if (!element.closest('.lang-options')) {
+          element.style.display = 'none';
+        }
       });
       
-      // Show elements for selected language EXCEPT lang options
-      document.querySelectorAll(`[data-lang="${lang}"]:not(.lang-options [data-lang])`).forEach(element => {
-        element.style.display = element.tagName === 'SPAN' ? 'inline' : 'block';
+      // Show elements for selected language (except lang options)
+      document.querySelectorAll(`[data-lang="${lang}"]`).forEach(element => {
+        // Skip elements inside lang-options
+        if (!element.closest('.lang-options')) {
+          element.style.display = element.tagName === 'SPAN' ? 'inline' : 'block';
+        }
       });
       
       // Special handling for buttons with multiple spans
@@ -1567,29 +1582,53 @@ Seeking to contribute to impactful AI and Cloud projects within a stimulating en
     const closeModal = document.getElementById('closeModal');
     const directDownload = document.getElementById('directDownload');
     const showQR = document.getElementById('showQR');
-    const qrCode = document.getElementById('qrCode');
-    
+    const qrCodeElement = document.getElementById('qrCode');
+    const qrContainer = document.getElementById('qrContainer');
+
+    function generateQRCode() {
+      const cvUrl = 'https://drive.google.com/file/d/1h2m2rJpxtApI0LKhkFWPaSzZmgz36OI0/view?usp=sharing';
+
+      // Effacer l'ancien QR code si déjà généré
+      qrCodeElement.innerHTML = "";
+
+      // Générer un nouveau QR code avec la librairie
+      new QRCode(qrCodeElement, {
+        text: cvUrl,
+        width: 180,
+        height: 180,
+        colorDark: "#0f172a",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    showQR.addEventListener('click', function () {
+      qrCodeElement.style.display = 'flex';
+      generateQRCode();
+    });
     cvDownloadBtn.addEventListener('click', function() {
       cvModal.classList.add('active');
     });
-    
+
     closeModal.addEventListener('click', function() {
       cvModal.classList.remove('active');
-      qrCode.style.display = 'none';
+      qrCodeElement.style.display = 'none';
     });
-    
+
     directDownload.addEventListener('click', function(e) {
       e.preventDefault();
-      // In a real implementation, this would trigger the CV download
-      // For demo purposes, we'll create a fake download
+      // URL de votre CV - À MODIFIER AVEC VOTRE VRAI LIEN
+      const cvUrl = 'https://drive.google.com/file/d/1h2m2rJpxtApI0LKhkFWPaSzZmgz36OI0/view?usp=sharing';
+      
       const link = document.createElement('a');
-      link.href = './zakaria.pdf'; 
+      link.href = cvUrl;
       link.download = 'Zakaria_Ed-dymany_CV.pdf';
+      link.target = '_blank';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       
-      // Show success message in current language
+      // Message de succès
       if (currentLang === 'fr') {
         alert('Téléchargement du CV réussi!');
       } else {
@@ -1598,17 +1637,24 @@ Seeking to contribute to impactful AI and Cloud projects within a stimulating en
       
       cvModal.classList.remove('active');
     });
-    
-    showQR.addEventListener('click', function() {
-      qrCode.style.display = 'block';
-      // In a real implementation, this would show the QR code for CV download
-    });
-    
+
+      showQR.addEventListener('click', function () {
+        qrCodeElement.style.display = 'flex';
+
+        // Nettoyer avant régénération
+        const qrCanvas = document.getElementById('qrCanvas');
+        const ctx = qrCanvas.getContext('2d');
+        ctx.clearRect(0, 0, qrCanvas.width, qrCanvas.height);
+
+        // Générer le QR après un léger délai
+        setTimeout(generateQRCode, 100);
+      });
+
     // Close modal when clicking outside
     cvModal.addEventListener('click', function(e) {
       if (e.target === cvModal) {
         cvModal.classList.remove('active');
-        qrCode.style.display = 'none';
+        qrCodeElement.style.display = 'none';
       }
     });
 
